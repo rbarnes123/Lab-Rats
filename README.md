@@ -1,12 +1,8 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/forzt7O_)
-
-Ryan Barnes GH63570 Semester Project :Rat Puzzle Game
-
+Ryan Barnes Rat Puzzle Game
 Overview: SRC - Contains all project files for the rat game including scripts for both the lobby and main-game places
           Client- Contains Client side scripts for both places
           Server- Contains Server side scripts for both places
           miscScripts - Contains scripts that I had trouble with ROJO placing in the wrong spots
-
 
 Work Log:
 3/14/2025 Finished Lobby for players to join and get teleported to game. Everything works except teleport functionality(game needs to be published first to test due to roblox gameID not existing yet). Implemented Morse Code half of the chain puzzle 
