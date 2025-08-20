@@ -3,16 +3,17 @@
 local players = game:GetService("Players")
 -- parts used
 local playerGUI = players.LocalPlayer:WaitForChild("PlayerGui")
-local recipeBook = playerGUI:WaitForChild("recipeBook")
+local recipeBook = playerGUI:WaitForChild("RecipeBook")
+local parentFrame = recipeBook:WaitForChild("parentFrame")
 --left page GUI
-local leftPage = recipeBook:WaitForChild("leftPage")
+local leftPage = parentFrame:WaitForChild("leftPage")
 local lName = leftPage.name
 local lDesc = leftPage.description
 local lRecipe = leftPage.recipe
 local prevPage = leftPage.prev
 
 --right Page GUI
-local rightPage = recipeBook:WaitForChild("rightPage")
+local rightPage = parentFrame:WaitForChild("rightPage")
 local rName = rightPage.name
 local rDesc = rightPage.description
 local rRecipe = rightPage.recipe

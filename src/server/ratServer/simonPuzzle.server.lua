@@ -26,46 +26,46 @@ local puzzle = ""
 local DB = false
 local touchDB = false
 local correctDB = false
+ 
+local buttonflag = true
+-- toggles passed light on and off and plays the sound
+local function tgLight(light, buttonFlag)
+    light.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
+    light.simonSound:Play()
+    buttonFlag = buttonFlag or false
+    -- if script triggers light toggle, waits to switch
+    task.wait(0.2)
+    light.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+end
+
 -- gets button input
 button1.MouseClick:Connect(function()
     if correctDB == false then
         playerInput = playerInput.."1"
-        light1.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-        light3.simonSound.Playing = true
-        task.wait(0.5)
-        light1.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+        tgLight(light1,buttonFlag)
     end
-    
 end)
 button2.MouseClick:Connect(function()
     if correctDB == false then
         playerInput = playerInput.."2"
-        light2.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-        light3.simonSound.Playing = true
-        task.wait(0.5)
-        light2.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+        tgLight(light2)
     end
 end)
 button3.MouseClick:Connect(function()
     if correctDB == false then
         playerInput = playerInput.."3"
-        light3.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-        light3.simonSound.Playing = true
-        task.wait(0.5)
-        light3.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+        tgLight(light3)
     end
 end)
 button4.MouseClick:Connect(function()
     if correctDB == false then
         playerInput = playerInput.."4"
-        light4.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-        light3.simonSound.Playing = true
-        task.wait(0.5)
-        light4.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+        tgLight(light4)
     end
 end)
 light3.simonSound.PlaybackRegionsEnabled = true
 light3.simonSound.PlaybackRegion = NumberRange.new(0,0.5)
+
 local function simonHandler()
     -- main loop moves to next stage of the puzzle if previous was correct
     if DB == false then
@@ -74,354 +74,124 @@ local function simonHandler()
             playerInput = ""
             -- handles which part of the puzzle the user is in
             if numCorrect == 0 then
-                -- 3 on
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound:play()
-                task.wait(0.5)
-                -- 3 off
-                light3.simonSound:stop()
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+                tgLight(light3)
                 puzzle = "3"
             elseif numCorrect == 1 then
-                -- light 3 on
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
+                tgLight(light3)
                 task.wait(0.5)
-                -- 3 off 1 on
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
-                task.wait(0.5)
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
-                task.wait(0.5)
-                -- 1 off
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+                tgLight(light1)
                 puzzle = "31"
             elseif numCorrect == 2 then
-                -- 3 on
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
+                tgLight(light3)
                 task.wait(0.5)
-                -- 3 off 1 on
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+                tgLight(light1)
                 task.wait(0.5)
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
-                task.wait(0.5)
-                -- 1 off 1 on again
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
-                task.wait(0.5)
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
-                task.wait(0.5)
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+                tgLight(light1)
                 puzzle = "311"
             elseif numCorrect == 3 then
-                -- 3 on
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
+                tgLight(light3)
                 task.wait(0.5)
-                -- 3 off 1 on
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+                tgLight(light1)
                 task.wait(0.5)
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
+                tgLight(light1)
                 task.wait(0.5)
-                -- 1 off 1 on again
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
-                task.wait(0.5)
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
-                task.wait(0.5)
-                -- 1 off 2 on
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
-                task.wait(0.5)
-                light2.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
-                -- 2 off 3 on
-                task.wait(0.5)
-                light2.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+                tgLight(light2)
                 puzzle = "3112"
             elseif numCorrect == 4 then
-                -- 3 on
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
+                tgLight(light3)
                 task.wait(0.5)
-                -- 3 off 1 on
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+                tgLight(light1)
                 task.wait(0.5)
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
+                tgLight(light1)
                 task.wait(0.5)
-                -- 1 off 1 on again
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+                tgLight(light2)
                 task.wait(0.5)
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
-                task.wait(0.5)
-                -- 1 off 2 on
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
-                task.wait(0.5)
-                light2.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
-                -- 2 off 3 on
-                task.wait(0.5)
-                light2.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
-                task.wait(0.5)
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
-                -- 3 off
-                task.wait(0.5)
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+                tgLight(light3)
                 puzzle = "31123"
             elseif numCorrect == 5 then
-                -- 3 on
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
+                tgLight(light3)
                 task.wait(0.5)
-                -- 3 off 1 on
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+                tgLight(light1)
                 task.wait(0.5)
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
+                tgLight(light1)
                 task.wait(0.5)
-                -- 1 off 1 on again
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+                tgLight(light2)
                 task.wait(0.5)
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
+                tgLight(light3)
                 task.wait(0.5)
-                -- 1 off 2 on
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
-                task.wait(0.5)
-                light2.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
-                -- 2 off 3 on
-                task.wait(0.5)
-                light2.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
-                task.wait(0.5)
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
-                -- 3 off 4 on
-                task.wait(0.5)
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
-                task.wait(0.5)
-                light4.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
-                -- 4 off
-                task.wait(0.5)
-                light4.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+                tgLight(light4)
                 puzzle = "311234"
             elseif numCorrect == 6 then
-                -- 3 on
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
+                tgLight(light3)
                 task.wait(0.5)
-                -- 3 off 1 on
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+                tgLight(light1)
                 task.wait(0.5)
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
+                tgLight(light1)
                 task.wait(0.5)
-                -- 1 off 1 on again
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+                tgLight(light2)
                 task.wait(0.5)
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
+                tgLight(light3)
                 task.wait(0.5)
-                -- 1 off 2 on
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+                tgLight(light4)
                 task.wait(0.5)
-                light2.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
-                -- 2 off 3 on
-                task.wait(0.5)
-                light2.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
-                task.wait(0.5)
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
-                -- 3 off 4 on
-                task.wait(0.5)
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
-                task.wait(0.5)
-                light4.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
-                -- 4 off 3 on
-                task.wait(0.5)
-                light4.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
-                task.wait(0.5)
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
-                task.wait(0.5)
-                -- 3 off
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+                tgLight(light3)
                 puzzle = "3112343"
             elseif numCorrect == 7 then
-                -- 3 on
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
+                tgLight(light3)
                 task.wait(0.5)
-                -- 3 off 1 on
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+                tgLight(light1)
                 task.wait(0.5)
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
+                tgLight(light1)
                 task.wait(0.5)
-                -- 1 off 1 on again
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+                tgLight(light2)
                 task.wait(0.5)
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
+                tgLight(light3)
                 task.wait(0.5)
-                -- 1 off 2 on
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+                tgLight(light4)
                 task.wait(0.5)
-                light2.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
-                -- 2 off 3 on
+                tgLight(light3)
                 task.wait(0.5)
-                light2.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
-                task.wait(0.5)
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
-                -- 3 off 4 on
-                task.wait(0.5)
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
-                task.wait(0.5)
-                light4.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
-                -- 4 off 3 on
-                task.wait(0.5)
-                light4.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
-                task.wait(0.5)
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
-                task.wait(0.5)
-                -- 3 off 2 on
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
-                task.wait(0.5)
-                light2.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
-                task.wait(0.5)
-                -- 2 off
-                light2.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+                tgLight(light2)
                 puzzle = "31123432"
             elseif numCorrect == 8 then
-                -- 3 on
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
+                tgLight(light3)
                 task.wait(0.5)
-                -- 3 off 1 on
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+                tgLight(light1)
                 task.wait(0.5)
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
+                tgLight(light1)
                 task.wait(0.5)
-                -- 1 off 1 on again
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+                tgLight(light2)
                 task.wait(0.5)
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
+                tgLight(light3)
                 task.wait(0.5)
-                -- 1 off 2 on
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+                tgLight(light4)
                 task.wait(0.5)
-                light2.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
-                -- 2 off 3 on
+                tgLight(light3)
                 task.wait(0.5)
-                light2.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+                tgLight(light2)
                 task.wait(0.5)
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
-                -- 3 off 4 on
-                task.wait(0.5)
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
-                task.wait(0.5)
-                light4.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
-                -- 4 off 3 on
-                task.wait(0.5)
-                light4.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
-                task.wait(0.5)
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
-                task.wait(0.5)
-                -- 3 off 2 on
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
-                task.wait(0.5)
-                light2.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
-                task.wait(0.5)
-                -- 2 off 4 on
-                light2.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
-                task.wait(0.5)
-                light4.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
-                -- 4 off
-                task.wait(0.5)
-                light4.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+                tgLight(light4)
                 puzzle = "311234324"
             elseif numCorrect == 9 then
-                -- 3 on
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
+                tgLight(light3)
                 task.wait(0.5)
-                -- 3 off 1 on
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+                tgLight(light1)
                 task.wait(0.5)
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
+                tgLight(light1)
                 task.wait(0.5)
-                -- 1 off 1 on again
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+                tgLight(light2)
                 task.wait(0.5)
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
+                tgLight(light3)
                 task.wait(0.5)
-                -- 1 off 2 on
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+                tgLight(light4)
                 task.wait(0.5)
-                light2.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
-                -- 2 off 3 on
+                tgLight(light3)
                 task.wait(0.5)
-                light2.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+                tgLight(light2)
                 task.wait(0.5)
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
-                -- 3 off 4 on
+                tgLight(light4)
                 task.wait(0.5)
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
-                task.wait(0.5)
-                light4.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
-                -- 4 off 3 on
-                task.wait(0.5)
-                light4.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
-                task.wait(0.5)
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
-                task.wait(0.5)
-                -- 3 off 2 on
-                light3.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
-                task.wait(0.5)
-                light2.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
-                task.wait(0.5)
-                -- 2 off 4 on
-                light2.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
-                task.wait(0.5)
-                light4.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
-                -- 4 off 1 on 
-                task.wait(0.5)
-                light4.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
-                task.wait(0.5)
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
-                light3.simonSound.Playing = true
-                task.wait(0.5)
-                -- 1 off
-                light1.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+                tgLight(light1)
                 puzzle = "3112343241"
             else
                 print("how")
