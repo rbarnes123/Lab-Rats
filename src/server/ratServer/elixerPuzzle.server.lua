@@ -151,7 +151,7 @@ p2Prompt.Triggered:Connect(function(localPlayer)
         end
     end
 end)
-
+-- controls mix prompt, mixes potions and spawns correct mixed potion
 mixPrompt.Triggered:Connect(function(localPlayer)
     local p1Value
     local p2Value

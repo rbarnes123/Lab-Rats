@@ -4,16 +4,15 @@ local players = game:GetService("Players")
 -- parts used
 local playerGUI = players.LocalPlayer:WaitForChild("PlayerGui")
 local recipeBook = playerGUI:WaitForChild("RecipeBook")
-local parentFrame = recipeBook:WaitForChild("parentFrame")
 --left page GUI
-local leftPage = parentFrame:WaitForChild("leftPage")
+local leftPage = recipeBook:WaitForChild("leftPage")
 local lName = leftPage.name
 local lDesc = leftPage.description
 local lRecipe = leftPage.recipe
 local prevPage = leftPage.prev
 
 --right Page GUI
-local rightPage = parentFrame:WaitForChild("rightPage")
+local rightPage = recipeBook:WaitForChild("rightPage")
 local rName = rightPage.name
 local rDesc = rightPage.description
 local rRecipe = rightPage.recipe
@@ -22,7 +21,8 @@ local close = rightPage.close
 
 --bookshelf
 local bookShelf = game.Workspace.potionRoom:WaitForChild("bookShelf")
-local recipeBookOpen = bookShelf.recipes.open
+local recipes = bookShelf:WaitForChild("recipes")
+local open = recipes:WaitForChild("open")
 
 -- control vars
 -- index of pages 
@@ -92,7 +92,7 @@ nextPage.MouseButton1Click:Connect(function()
 
 end)
 --opens recipeBook
-recipeBookOpen.MouseClick:Connect(function()
+open.MouseClick:Connect(function()
     recipeBook.Enabled = true
 end)
 --closes recipeBook
