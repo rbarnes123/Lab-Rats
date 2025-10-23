@@ -217,7 +217,7 @@ local function simonHandler()
             end
             task.wait(1)
         end
-        -- when puzzle is complete, all lights turn stay red, and the body drops from the ceiling
+        -- when puzzle is complete, all lights stay red, and the body drops from the ceiling
         light1.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
         light2.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
         light3.Glass_LIGHT.BrickColor = BrickColor.new("Persimmon")
