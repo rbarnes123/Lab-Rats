@@ -250,8 +250,6 @@ local function simonHandler()
             light2.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
             light3.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
             light4.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
-            -- debug delete later
-            numCorrect = 10
             -- reset correct flag
             correctFlag = true
         end
