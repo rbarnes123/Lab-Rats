@@ -367,7 +367,9 @@ vatPrompt.Triggered:Connect(function(localPlayer)
                 for _, player in players:GetChildren() do
                     local ratSerum = replicatedStorage:FindFirstChild("RatSerum")
                     local serumClone = ratSerum:Clone()
+                    local starterSerum = ratSerum:Clone()
                     serumClone.Parent = player:FindFirstChild("Backpack")
+                    starterSerum.Parent = player:FindFirstChild("StarterGear")
                 end
                 -- waits and then turns off confetti
                 task.wait(2)

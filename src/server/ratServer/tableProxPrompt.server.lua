@@ -26,11 +26,19 @@ local function deletefromPlayers(item)
     for _, player in ipairs(players:GetPlayers()) do
         local character = player.Character
         -- if item in backpack delete it
-        if(player.Backpack:FindFirstChild(item.Name) ~= nil) then
-            item:Destroy()
+        local backpackItem = player.Backpack:FindFirstChild(item.Name)
+        if(backpackItem ~= nil) then
+            backpackItem:Destroy()
+        end
         -- if item in hand delete it
-        elseif(character:FindFirstChild(item.Name) ~= nil) then
-            item:Destroy()
+        local heldItem = character:FindFirstChild(item.Name)
+        if(heldItem ~= nil) then
+            heldItem:Destroy()
+        end
+        -- if item in starter gear delete it
+        local starterItem = player.StarterGear:FindFirstChild(item.Name)
+        if(starterItem ~= nil) then
+            starterItem:Destroy()
         end
     end
 end

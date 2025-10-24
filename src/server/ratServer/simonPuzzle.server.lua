@@ -250,6 +250,8 @@ local function simonHandler()
             light2.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
             light3.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
             light4.Glass_LIGHT.BrickColor = BrickColor.new("Really black")
+            -- debug delete later
+            numCorrect = 10
             -- reset correct flag
             correctFlag = true
         end
@@ -281,7 +283,9 @@ local function simonHandler()
                 -- adds the body to the player, 
                 if player:FindFirstChild("Backpack") then
                     local playerTool = bodyTool:Clone()
+                    local starterTool = bodyTool:Clone()
                     playerTool.Parent = player.Backpack
+                    starterTool.Parent = player.StarterGear
                     -- hides body copies
                     playerTool.ratBodyTool.Transparency = 1
                     playerTool.ratBodyTool.LeftArm.Transparency = 1
